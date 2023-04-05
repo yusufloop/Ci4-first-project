@@ -20,4 +20,9 @@ class Home extends BaseController
         echo $adminShop->product('laptop','lenovo');
     
     }
+
+    function show404()
+    {
+        echo 'This is a 404 page';
+    }
 }
