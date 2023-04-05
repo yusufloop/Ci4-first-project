@@ -13,14 +13,12 @@ class Blog extends BaseController
             'title' =>'This is a blog Page',
         ];
 
-        $posts = [
-            ['Title 1','Title 2','Title 3'],
-            
-        ];
+        $posts = ['Title 1','Title 2','Title 3'];
+        $data['posts'] = $posts;
 
-        echo view('header', $data);
+        echo view('templates/header', $data);
         echo view('blog');
-        echo view('footer');
+        echo view('templates/footer');
         // return view('blog');
     }
     public function post()
@@ -30,9 +28,9 @@ class Blog extends BaseController
             'title' =>'This is a Awesome Blog',
         ];
 
-        echo view('header',$data);
+        echo view('templates/header',$data);
         echo view('single_post');
-        echo view('footer');
+        echo view('templates/footer');
     }
     
 
