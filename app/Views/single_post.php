@@ -1,4 +1,10 @@
+<?= $this->extend('layouts/main')?>
 
-    <h1>
-        This is the single Post Page
-    </h1>
+<?= $this->section('content')?>
+<h1>
+    <?= $title ?>
+</h1>
+
+<p><?= $title ?></p>
+
+<?= $this->endSection() ?>
