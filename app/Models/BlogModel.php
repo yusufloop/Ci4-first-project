@@ -17,10 +17,10 @@ class BlogModel extends Model
     protected $allowedFields = ['post_title', 'post_content'];
 
     // Dates
-    // protected $useTimestamps = false;
+    protected $useTimestamps = true;
     // protected $dateFormat    = 'datetime';
-    // protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
+    protected $createdField  = 'post_created_at';
+    protected $updatedField  = 'post_updated_at';
     // protected $deletedField  = 'deleted_at';
 
     // // Validation
@@ -31,7 +31,7 @@ class BlogModel extends Model
 
     // // Callbacks
     // protected $allowCallbacks = true;
-    // protected $beforeInsert   = [];
+    protected $beforeInsert   = ['checkName']; //everytime try insert, this will check
     // protected $afterInsert    = [];
     // protected $beforeUpdate   = [];
     // protected $afterUpdate    = [];
@@ -39,4 +39,18 @@ class BlogModel extends Model
     // protected $afterFind      = [];
     // protected $beforeDelete   = [];
     // protected $afterDelete    = [];
+
+    public function checkName(array $data)
+    {
+        $newTitle = $data['data']['post_title'].' Extra Features';
+        $data['data']['post_title'] = $newTitle;
+
+        return $data;
+    }
+//     public function hashPassword(array $data)
+//     {
+//         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+
+//         return $data;
+//     }
 }
