@@ -17,33 +17,39 @@
     <div class="container">
         <h1>Form Validation</h1>
         <?php if(isset($validation)): ?>
-                <div class="text-danger">
-                    <?= $validation->listErrors()?>
-                </div>
+        <div class="text-danger">
+            <?= $validation->listErrors()?>
+        </div>
         <?php endif; ?>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input name="email" value="<?= set_value('email')?>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input name="email" value="<?= set_value('email')?>" type="text" class="form-control"
+                    id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input name="password" value="<?= set_value('password')?>" type="password" class="form-control" id="exampleInputPassword1">
+                <input name="password" value="<?= set_value('password')?>" type="password" class="form-control"
+                    id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Category</label>
                 <select name="category" class="form-control">
-                    
+
                     <?php foreach ($categories as $category) : ?>
-                        <option <?= set_select('category', $category) ?> value="<?= $category ?>"><?= $category?></option>
+                    <option <?= set_select('category', $category) ?> value="<?= $category ?>"><?= $category?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Password</label>
                 <input name="date" value="<?= set_value('fate')?>" type="date" class="form-control" id="date">
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Upload File</label>
+                <input name="theFile[]" multiple class="form-control" type="file" id="formFile">
             </div>
             <?php 
                 echo '<pre>';
